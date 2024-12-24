@@ -2364,8 +2364,7 @@ const message = {
         configResource: 'Configuration',
         saveAndReload: 'Save and Reload',
         clearProxyCache: 'Clear reverse proxy cache',
-        clearProxyCacheWarn:
-            'Clearing the reverse proxy cache will affect all websites configured with cache and requires restarting OpenResty. Do you want to continue? ',
+        clearProxyCacheWarn: 'This action will delete all files in the cache directory. Do you want to continue?',
         create: 'Add a new module',
         update: 'Edit a module',
         params: 'Parameters',
