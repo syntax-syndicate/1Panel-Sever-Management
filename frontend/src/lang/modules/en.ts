@@ -1431,6 +1431,10 @@ const message = {
         ipWhiteList: 'IP allowlist',
         ipWhiteListEgs: 'One per line. For example,\n172.161.10.111\n172.161.10.0/24',
         ipWhiteListHelper: 'IPs within the allowlist can access the API.',
+        apiKeyValidityTime: 'Validity period of interface key',
+        apiKeyValidityTimeEgs: 'Validity period of interface key (in minutes)',
+        apiKeyValidityTimeHelper:
+            'The interface timestamp is valid if its difference from the current timestamp (in minutes) is within the allowed range. A value of 0 disables verification.',
         apiKeyReset: 'Interface key reset',
         apiKeyResetHelper: 'the associated key service will become invalid. Please add a new key to the service',
         confDockerProxy: 'Configure docker proxy',

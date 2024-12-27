@@ -30,4 +30,5 @@ type System struct {
 	ApiInterfaceStatus string `mapstructure:"api_interface_status"`
 	ApiKey             string `mapstructure:"api_key"`
 	IpWhiteList        string `mapstructure:"ip_white_list"`
+	ApiKeyValidityTime string `mapstructure:"api_key_validity_time"`
 }

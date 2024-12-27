@@ -350,3 +350,13 @@ var AddApiInterfaceConfig = &gormigrate.Migration{
 		return nil
 	},
 }
+
+var AddApiKeyValidityTime = &gormigrate.Migration{
+	ID: "20241226-add-api-key-validity-time",
+	Migrate: func(tx *gorm.DB) error {
+		if err := tx.Create(&model.Setting{Key: "ApiKeyValidityTime", Value: "120"}).Error; err != nil {
+			return err
+		}
+		return nil
+	},
+}

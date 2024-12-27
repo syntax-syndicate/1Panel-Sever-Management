@@ -65,6 +65,17 @@
                             />
                             <span class="input-help">{{ $t('setting.ipWhiteListHelper') }}</span>
                         </el-form-item>
+                        <el-form-item :label="$t('setting.apiKeyValidityTime')" prop="apiKeyValidityTime">
+                            <el-input
+                                :placeholder="$t('setting.apiKeyValidityTimeEgs')"
+                                v-model="form.apiKeyValidityTime"
+                            >
+                                <template #append>{{ $t('commons.units.minute') }}</template>
+                            </el-input>
+                            <span class="input-help">
+                                {{ $t('setting.apiKeyValidityTimeHelper') }}
+                            </span>
+                        </el-form-item>
                     </el-col>
                 </el-row>
             </el-form>
@@ -103,17 +114,20 @@ const form = reactive({
     apiKey: '',
     ipWhiteList: '',
     apiInterfaceStatus: '',
+    apiKeyValidityTime: 120,
 });
 
 const rules = reactive({
     ipWhiteList: [Rules.requiredInput, { validator: checkIPs, trigger: 'blur' }],
     apiKey: [Rules.requiredInput],
+    apiKeyValidityTime: [Rules.requiredInput, Rules.integerNumberWith0],
 });
 
 interface DialogProps {
     apiInterfaceStatus: string;
     apiKey: string;
     ipWhiteList: string;
+    apiKeyValidityTime: number;
 }
 
 function checkIPs(rule: any, value: any, callback: any) {
@@ -146,6 +160,7 @@ const acceptParams = async (params: DialogProps): Promise<void> => {
         });
     }
     form.ipWhiteList = params.ipWhiteList;
+    form.apiKeyValidityTime = params.apiKeyValidityTime;
     drawerVisible.value = true;
 };
 
@@ -179,6 +194,7 @@ const onSave = async (formEl: FormInstance | undefined) => {
             apiKey: form.apiKey,
             ipWhiteList: form.ipWhiteList,
             apiInterfaceStatus: form.apiInterfaceStatus,
+            apiKeyValidityTime: form.apiKeyValidityTime,
         };
         loading.value = true;
         await updateApiConfig(param)

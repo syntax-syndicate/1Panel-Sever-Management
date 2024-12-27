@@ -61,6 +61,7 @@ export namespace Setting {
         apiInterfaceStatus: string;
         apiKey: string;
         ipWhiteList: string;
+        apiKeyValidityTime: number;
     }
     export interface SettingUpdate {
         key: string;
@@ -193,5 +194,6 @@ export namespace Setting {
         apiInterfaceStatus: string;
         apiKey: string;
         ipWhiteList: string;
+        apiKeyValidityTime: number;
     }
 }

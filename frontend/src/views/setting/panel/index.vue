@@ -285,6 +285,7 @@ const form = reactive({
     apiInterfaceStatus: 'disable',
     apiKey: '',
     ipWhiteList: '',
+    apiKeyValidityTime: 120,
 
     proHideMenus: ref(i18n.t('setting.unSetting')),
     hideMenuList: '',
@@ -353,6 +354,7 @@ const search = async () => {
     form.apiInterfaceStatus = res.data.apiInterfaceStatus;
     form.apiKey = res.data.apiKey;
     form.ipWhiteList = res.data.ipWhiteList;
+    form.apiKeyValidityTime = res.data.apiKeyValidityTime;
 
     const json: Node = JSON.parse(res.data.xpackHideMenu);
     const checkedTitles = getCheckedTitles(json);
@@ -428,6 +430,7 @@ const onChangeApiInterfaceStatus = async () => {
             apiInterfaceStatus: form.apiInterfaceStatus,
             apiKey: form.apiKey,
             ipWhiteList: form.ipWhiteList,
+            apiKeyValidityTime: form.apiKeyValidityTime,
         });
         return;
     }
@@ -442,6 +445,7 @@ const onChangeApiInterfaceStatus = async () => {
                 apiKey: form.apiKey,
                 ipWhiteList: form.ipWhiteList,
                 apiInterfaceStatus: form.apiInterfaceStatus,
+                apiKeyValidityTime: form.apiKeyValidityTime,
             };
             await updateApiConfig(param)
                 .then(() => {
